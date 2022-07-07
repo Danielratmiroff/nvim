@@ -101,6 +101,7 @@ packer.init({
 })
 
 -- Install your plugins here
+-- Install your plugins here
 return packer.startup(function(use)
     use({ "nvim-lua/plenary.nvim"})
     use({ "wbthomason/packer.nvim" }) -- Have packer manage itself

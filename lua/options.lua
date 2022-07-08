@@ -35,21 +35,21 @@ local options = {
   incsearch = true,                        -- incremental search
   showmatch = true,                        -- show matching
   softtabstop = 4,                         -- see multiple spaces as tabstops so <BS> does the right thing
-  expandtab = true                         -- converts tabs to white space
-  autoindent = true                        -- indent a new line the same amount as the line just typed
-  ttyfast = true                           -- Speed up scrolling in Vim
-  wildmode = "longest,list"                -- get bash-like tab completions
-  t_Co = 256                               -- color range
-  syntax = "on"                            -- syntax highlighting
+  expandtab = true,                         -- converts tabs to white space
+  autoindent = true,                        -- indent a new line the same amount as the line just typed
+  ttyfast = true,                           -- Speed up scrolling in Vim
+  wildmode = "longest,list",                -- get bash-like tab completions
+  syntax = "on",                            -- syntax highlighting
 }
 
-vim.cmd [[highlight Normal guibg=none]]
-vim.cmd [[filetype plugin on]]
-vim.cmd [[filetype plugin indent on]]  -- allow auto-indenting depending on file type
+vim.cmd([[let g:python3_host_prog = '/bin/python3']])
+vim.cmd([[highlight Normal guibg=none]])
+vim.cmd([[filetype plugin on]])
+vim.cmd([[filetype plugin indent on]])  -- allow auto-indenting depending on file type
 
 vim.opt.shortmess:append "c"
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+vim.cmd([["set whichwrap+=<,>,[,],h,l"]])
+vim.cmd([[set iskeyword+=-]])
 -- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
 for k, v in pairs(options) do

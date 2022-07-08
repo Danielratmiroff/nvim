@@ -56,13 +56,15 @@ return packer.startup(function(use)
 	  "nvim-lualine/lualine.nvim",
  	 requires = { "kyazdani42/nvim-web-devicons", opt = true }
   	}
-    -- use({ "vim-airline/vim-airline "})
+    -- use({ "vim-airline/vim-airline "}) " Replaced by lualine
     -- use({ "vim-airline/vim-airline-themes "})
-
+    
   use "simrat39/symbols-outline.nvim"
   use "b0o/SchemaStore.nvim"
   use "folke/trouble.nvim"
-  
+  use "windwp/nvim-autopairs"
+
+  -- LSP
 use {
   'VonHeikemen/lsp-zero.nvim', -- Setup LSP for us (thankfully)
   requires = {
@@ -78,21 +80,19 @@ use {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-nvim-lua'},
     {'hrsh7th/cmp-cmdline' },
-    
+
     -- Snippets
     {'L3MON4D3/LuaSnip'},
     {'rafamadriz/friendly-snippets'},
   }
 }
+    use "ray-x/lsp_signature.nvim"
+	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- cmp plugins
    use "hrsh7th/cmp-emoji"
    use "hrsh7th/cmp-nvim-lua"
    use "nvim-lua/lsp_extensions.nvim"
-
-	-- LSP
-    use "ray-x/lsp_signature.nvim"
-	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
@@ -100,6 +100,13 @@ use {
 
 	-- Treesitter
 	use "nvim-treesitter/nvim-treesitter" 
+
+    -- Prettier
+    use {
+        'prettier/vim-prettier',
+        run = 'yarn install',
+        ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'html'}
+    }
 
 	-- Git
 	  use "lewis6991/gitsigns.nvim"

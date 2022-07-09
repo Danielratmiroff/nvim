@@ -49,7 +49,8 @@ return packer.startup(function(use)
     use "mhinz/vim-startify"
 
     -- Themes
-    use "sainnhe/edge"
+    -- use "sainnhe/edge"
+    use 'folke/tokyonight.nvim'
 
     -- Statusline
       use{
@@ -63,9 +64,9 @@ return packer.startup(function(use)
   use "b0o/SchemaStore.nvim"
   use "folke/trouble.nvim"
   use "windwp/nvim-autopairs"
-
+  use "RRethy/vim-illuminate" -- Illuminate next matching definition
   -- LSP
-use {
+  use {
   'VonHeikemen/lsp-zero.nvim', -- Setup LSP for us (thankfully)
   requires = {
     -- LSP Support
@@ -80,12 +81,13 @@ use {
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-nvim-lua'},
     {'hrsh7th/cmp-cmdline' },
-
     -- Snippets
     {'L3MON4D3/LuaSnip'},
     {'rafamadriz/friendly-snippets'},
-  }
-}
+     }
+    }
+
+    use 'onsails/lspkind-nvim'
     use "ray-x/lsp_signature.nvim"
 	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 

@@ -1,28 +1,26 @@
 -- Lualine pluggin configuration
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
-	return
+	return "Something failed loading lualine"
 end
 
-local hide_in_width = function()
-	return vim.fn.winwidth(0) > 80
-end
+local icons = require "icons"
 
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	sections = { "error", "warn" },
-	symbols = { error = " ", warn = " " },
-	colored = false,
-	update_in_insert = false,
+	symbols = { error = " ", warn = " " },
+	colored = true,
+	update_in_insert = true,
 	always_visible = true,
 }
 
 local diff = {
-	"diff",
-	colored = false,
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+  "diff",
+  colored = false,
+  symbols = { added = icons.git.Add .. " ", modified = icons.git.Mod .. " ", removed = icons.git.Remove .. " " }, -- changes diff symbols
+  separator = "%#SLSeparator#" .. "│ " .. "%*",
 }
 
 local mode = {
@@ -49,21 +47,11 @@ local location = {
 	padding = 0,
 }
 
--- cool function for progress
-local progress = function()
-	local current_line = vim.fn.line(".")
-	local total_lines = vim.fn.line("$")
-	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-	local line_ratio = current_line / total_lines
-	local index = math.ceil(line_ratio * #chars)
-	return chars[index]
-end
-
 -- Setup
 lualine.setup({
   options = {
+    theme = 'tokyonight',
     icons_enabled = true,
-    theme = 'auto',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -71,12 +59,13 @@ lualine.setup({
     globalstatus = false,
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_a = {mode, branch},
+    lualine_b = { diagnostics},
     lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    -- add language_server
+    lualine_x = {diff, filetype },
+    -- lualine_y = {'progress'},
+    lualine_z = {location},
   },
   inactive_sections = {
     lualine_a = {},

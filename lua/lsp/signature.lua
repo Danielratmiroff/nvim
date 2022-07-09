@@ -1,6 +1,6 @@
 local status_ok, signature = pcall(require, "lsp_signature")
 if not status_ok then
-  return
+  return "Something failed loading Lsp-Signature"
 end
 
 local icons = require "icons"

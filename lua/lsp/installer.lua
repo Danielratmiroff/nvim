@@ -8,7 +8,7 @@ local servers = {
   "cssmodules_ls",
   "emmet_ls",
   "html",
--- JAVA  "jdtls",
+  -- JAVA  "jdtls",
   "jsonls",
   "sumneko_lua",
   "tsserver",
@@ -32,9 +32,9 @@ local settings = {
   automatic_installatin = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
   ui = {
     icons = {
-        server_installed = "✓",
-        server_pending = "➜",
-        server_uninstalled = "✗"
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
     },
     keymaps = {
       toggle_server_expand = "<CR>",

@@ -1,7 +1,7 @@
 local npairs = require('nvim-autopairs')
 
 npairs.setup({fast_wrap = {
-     disable_filetype = { "TelescopePrompt", "spectre_panel" },
+     disable_filetype = { "TelescopePrompt" },
     map = '<M-e>',
       chars = { '{', '[', '(', '"', "'" },
       pattern = [=[[%'%"%)%>%]%)%}%,]]=],
@@ -11,3 +11,4 @@ npairs.setup({fast_wrap = {
       highlight = 'Search',
       highlight_grey='Comment'
 }})
+

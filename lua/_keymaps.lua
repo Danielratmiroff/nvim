@@ -7,7 +7,6 @@ local opts = { noremap = true, silent = true }
 -- Leader
 vim.g.mapleader = ' '
 
-keymap("n", "<Leader>a", "gg", opts)
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -16,7 +15,38 @@ keymap("n", "<Leader>a", "gg", opts)
 --   term_mode = "t",
 --   command_mode = "c",
 
+--
 --- Normal ---
+--
+-- Delete without yank
+keymap("n", "d", '"_d', opts)
+keymap("n", "D", '"_D', opts)
+keymap("n", "x", '"_x', opts)
+keymap("n", "db", '"_db', opts)
+
+keymap("n", "<Leader>d", 'd', opts)
+keymap("n", "<Leader>D", 'D', opts)
+keymap("n", "<Leader>db", 'db', opts)
+
+keymap("v", "d", '"_d', opts) -- visual mode
+keymap("v", "<Leader>d", 'd', opts)
+-- Change without yank
+keymap("n", "c", '"_c', opts)
+keymap("n", "C", '"_C', opts)
+keymap("n", "cb", '"_cb', opts)
+
+-- Exit insert mode
+keymap("i", "jk", '<ESC>', opts)
+
+-- File management
+keymap("n", "<C-s>", ':w', opts)
+keymap("n", "q", ':q', opts)
+
+
+-- Select all
+keymap("n", "<C-a>", "gg<S-v>G", opts)
+keymap("v", "<C-a>", "gg<S-v>G", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -33,7 +63,9 @@ keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+--
 --- Visual ---
+--
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
@@ -45,7 +77,9 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+--
 -- Telescope
+--
 -- Builtin
 keymap('n', '<leader>fg', '<CMD>lua require("telescope.builtin").git_files{}<CR>', opts)
 keymap('n', '<leader>ff', '<CMD>lua require("telescope.builtin").find_files{ hidden = true }<CR>', opts)
@@ -55,7 +89,7 @@ keymap('n', '<leader>fh', '<CMD>lua require("telescope.builtin").help_tags()<CR>
 keymap('n', '<leader>fd', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)
 keymap('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>', opts)
 
--- Language Servers 
+-- Language Servers
 -- -- Do not work for now
 -- keymap('n', '<leader>lsd', '<CMD>lua require("telescope.builtin").lsp_definitions{}<CR>', opts)
 -- keymap('n', '<leader>lsi', '<CMD>lua require("telescope.builtin").lsp_implementations{}<CR>', opts)

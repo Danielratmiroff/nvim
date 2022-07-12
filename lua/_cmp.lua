@@ -6,7 +6,7 @@ local source_mapping = {
   buffer = "[Buffer]",
   nvim_lsp = "[LSP]",
   nvim_lua = "[Lua]",
-  cmp_tabnine = "[TN]",
+  cmp_tabnine = "[T9]",
   path = "[Path]",
 }
 
@@ -46,13 +46,4 @@ cmp.setup({
       return vim_item
     end,
   },
-})
-
-local tabnine = require("cmp_tabnine.config")
-tabnine:setup({
-  max_lines = 1000,
-  max_num_results = 20,
-  sort = true,
-  run_on_every_keystroke = true,
-  snippet_placeholder = "..",
 })

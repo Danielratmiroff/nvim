@@ -85,6 +85,16 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
 
+  if server == "gopls" then
+    local gopls_opts = require "gopls"
+    opts = vim.tbl_deep_extend("force", gopls_opts, opts)
+  end
+
+  if server == "tsserver" then
+    local tsserver_opts = require "tsserver"
+    opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+  end
+
   if server == "emmet_ls" then
     local emmet_ls_opts = require "emmet_ls"
     opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)

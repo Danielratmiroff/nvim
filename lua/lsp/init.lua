@@ -1,13 +1,10 @@
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
-  return "Something failed loading Lspconfig"
-end
+local lspconfig = require "lspconfig"
 
 require "lsp.signature"
 require "lsp.installer"
+require "_cmp"
 require("lsp.handlers").setup()
 require "lsp.null-ls"
-require "lsp.lsp-kind"
 
 local lsp = require('lsp-zero')
 

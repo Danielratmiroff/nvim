@@ -40,17 +40,17 @@ keymap("i", "jk", '<ESC>', opts)
 
 -- File management
 -- Save file
-keymap("i", "<C-s>", '<Esc>:update<cr>gi', opts)
 keymap("n", "<C-s>", ':update<cr>', opts)
+keymap("i", "<C-s>", '<Esc>:update<cr>gi', opts)
 keymap("v", "<C-s>", ':<Esc>:update<cr>gv', opts)
 -- Quit file
 keymap("n", "<C-q>", ':q<cr>', opts)
-keymap("v", "<C-q>", ':q<cr>', opts)
-keymap("i", "<C-q>", ':q<cr>', opts)
+keymap("v", "<C-q>", '<Esc>:q<cr>', opts)
+keymap("i", "<C-q>", '<Esc>:q<cr>', opts)
 -- Quit and save file
-keymap("n", "<C-S-q>", ':wq!<cr>', opts)
-keymap("v", "<C-S-q>", ':wq!<cr>', opts)
-keymap("i", "<C-S-q>", ':wq!<cr>', opts)
+keymap("n", "<C-w>", ':wq!<cr>', opts)
+keymap("v", "<C-w>", '<Esc>:wq!<cr>', opts)
+keymap("i", "<C-w>", '<Esc>:wq!<cr>', opts)
 
 -- Select all
 keymap("n", "<C-a>", "gg<S-v>G", opts)

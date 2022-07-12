@@ -89,11 +89,12 @@ return packer.startup(function(use)
     }
   }
 
-  use 'onsails/lspkind-nvim'
-  use "ray-x/lsp_signature.nvim"
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  -- Tabnine
+  use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 
   -- cmp plugins
+  use 'onsails/lspkind-nvim'
+  use "ray-x/lsp_signature.nvim"
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
   use "nvim-lua/lsp_extensions.nvim"
@@ -105,7 +106,8 @@ return packer.startup(function(use)
   -- Treesitter
   use "nvim-treesitter/nvim-treesitter"
 
-  -- Prettier
+  -- Formatters and linters
+  use "jose-elias-alvarez/null-ls.nvim"
   use {
     'prettier/vim-prettier',
     run = 'yarn install',

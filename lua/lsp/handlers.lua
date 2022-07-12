@@ -1,14 +1,14 @@
 local M = {}
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
+local lspconfig = require "lspconfig"
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_cmp_ok then
-  return "Something failed loading cmp_nvim_lsp"
-end
+lspconfig.tsserver.setup({
+  root_dir = require('lspconfig.util').root_pattern('.git')
+})
 
+M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 -- Settings for LSP
 M.setup = function()

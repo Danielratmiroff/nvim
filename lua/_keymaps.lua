@@ -15,9 +15,6 @@ vim.g.mapleader = ' '
 --   term_mode = "t",
 --   command_mode = "c",
 
---
---- Normal ---
---
 -- Delete without yank
 keymap("n", "d", '"_d', opts)
 keymap("n", "D", '"_D', opts)
@@ -28,7 +25,7 @@ keymap("n", "<Leader>d", 'd', opts)
 keymap("n", "<Leader>D", 'D', opts)
 keymap("n", "<Leader>db", 'db', opts)
 
-keymap("v", "d", '"_d', opts) -- visual mode
+keymap("v", "d", '"_d', opts)
 keymap("v", "<Leader>d", 'd', opts)
 -- Change without yank
 keymap("n", "c", '"_c', opts)
@@ -39,6 +36,7 @@ keymap("n", "cb", '"_cb', opts)
 keymap("i", "jk", '<ESC>', opts)
 
 -- File management
+keymap("n", "<Leader>b", ':e .<cr>', opts) -- Open dir tree
 -- Save file
 keymap("n", "<C-s>", ':update<cr>', opts)
 keymap("i", "<C-s>", '<Esc>:update<cr>gi', opts)
@@ -72,9 +70,6 @@ keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
---
---- Visual ---
---
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
@@ -95,7 +90,7 @@ keymap('n', '<leader>ff', '<CMD>lua require("telescope.builtin").find_files{ hid
 keymap('n', '<leader>fl', '<CMD>lua require("telescope.builtin").live_grep()<CR>', opts)
 keymap('n', '<leader>fb', '<CMD>lua require("telescope.builtin").buffers()<CR>', opts)
 keymap('n', '<leader>fh', '<CMD>lua require("telescope.builtin").help_tags()<CR>', opts)
-keymap('n', '<leader>fd', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)
+keymap('n', '<leader>fe', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)
 keymap('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>', opts)
 
 -- Language Servers
@@ -104,3 +99,19 @@ keymap('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>
 -- keymap('n', '<leader>lsi', '<CMD>lua require("telescope.builtin").lsp_implementations{}<CR>', opts)
 -- keymap('n', '<leader>lsl', '<CMD>lua require("telescope.builtin").lsp_code_actions{}<CR>', opts)
 -- keymap('n', '<leader>lst', '<CMD>lua require("telescope.builtin").lsp_type_definitions{}<CR>',opts)
+--
+--
+--
+
+-- Toogle diagnostics
+local diagnostics_active = true
+local toggle_diagnostics = function()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.show()
+  else
+    vim.diagnostic.hide()
+  end
+end
+
+vim.keymap.set('n', '<leader>e', toggle_diagnostics)

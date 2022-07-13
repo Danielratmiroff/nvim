@@ -48,6 +48,9 @@ vim.cmd([[highlight Normal guibg=none]])
 vim.cmd([[filetype plugin on]])
 vim.cmd([[filetype plugin indent on]]) -- allow auto-indenting depending on file type
 
+vim.cmd([[autocmd CmdwinEnter * nnoremap <CR> <CR>]])
+vim.cmd([[autocmd BufReadPost quickfix nnoremap <CR> <CR>]])
+
 vim.cmd([[let g:prettier#autoformat = 1]])
 vim.cmd([[let g:prettier#autoformat_require_pragma = 0]])
 

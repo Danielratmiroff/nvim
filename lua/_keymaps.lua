@@ -29,7 +29,6 @@ keymap("v", "<C-a>", "gg<S-v>G", opts)
 keymap("n", "p", '"0p', opts)
 keymap("n", "P", '"0P', opts)
 --keymap("n", "<Leader>d", '"_d', opts)
-
 -- File management
 -- Save file
 keymap("n", "<C-s>", ':update<cr>', opts)
@@ -68,6 +67,7 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
 --- Visual Block ---
 -- Move text up and down
+keymap("n", "<Leader>q", "<C-q>", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)

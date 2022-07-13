@@ -26,7 +26,7 @@ keymap("n", "<Leader>D", 'D', opts)
 keymap("n", "<Leader>db", 'db', opts)
 
 keymap("v", "d", '"_d', opts)
-keymap("v", "<Leader>d", 'd', opts)
+keymap("v", "<Leader>d", '"_d', opts)
 -- Change without yank
 keymap("n", "c", '"_c', opts)
 keymap("n", "C", '"_C', opts)
@@ -42,13 +42,9 @@ keymap("n", "<C-s>", ':update<cr>', opts)
 keymap("i", "<C-s>", '<Esc>:update<cr>gi', opts)
 keymap("v", "<C-s>", ':<Esc>:update<cr>gv', opts)
 -- Quit file
-keymap("n", "<C-q>", ':q<cr>', opts)
-keymap("v", "<C-q>", '<Esc>:q<cr>', opts)
-keymap("i", "<C-q>", '<Esc>:q<cr>', opts)
--- Quit and save file
-keymap("n", "<C-w>", ':wq!<cr>', opts)
-keymap("v", "<C-w>", '<Esc>:wq!<cr>', opts)
-keymap("i", "<C-w>", '<Esc>:wq!<cr>', opts)
+keymap("n", "q", ':q<cr>', opts)
+keymap("v", "q", '<Esc>:q<cr>', opts)
+keymap("i", "q", '<Esc>:q<cr>', opts)
 
 -- Select all
 keymap("n", "<C-a>", "gg<S-v>G", opts)
@@ -67,8 +63,8 @@ keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 --keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+--keymap("n", "<S-l>", ":bnext<CR>", opts)
+--keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)

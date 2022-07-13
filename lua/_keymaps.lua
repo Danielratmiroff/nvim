@@ -15,16 +15,20 @@ vim.g.mapleader = ' '
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- General
+keymap("n", "<C-u>", '<C-r>', opts) -- redo
+keymap("i", "jk", '<ESC>', opts) -- exit insert mode
+keymap("n", "<Enter>", 'o<ESC>', opts) -- standard enter
+keymap("n", "<BS>", 'i<BS><ESC>', opts) -- standard backspace
+
+-- Select all
+keymap("n", "<C-a>", "gg<S-v>G", opts)
+keymap("v", "<C-a>", "gg<S-v>G", opts)
+
 -- Paste from register
 keymap("n", "p", '"0p', opts)
 keymap("n", "P", '"0P', opts)
 --keymap("n", "<Leader>d", '"_d', opts)
-
--- Redo
-keymap("n", "<C-u>", '<C-r>', opts)
-
--- Exit insert mode
-keymap("i", "jk", '<ESC>', opts)
 
 -- File management
 -- Save file
@@ -36,11 +40,7 @@ keymap("n", "<C-q>", ':q<cr>', opts)
 keymap("v", "<C-q>", '<Esc>:q<cr>', opts)
 keymap("i", "<C-q>", '<Esc>:q<cr>', opts)
 
--- Select all
-keymap("n", "<C-a>", "gg<S-v>G", opts)
-keymap("v", "<C-a>", "gg<S-v>G", opts)
-
--- Better window navigation
+-- Window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -49,23 +49,22 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Splits
 keymap("n", "<C-p>", ":wincmd h <bar> :Vex<cr>", opts) -- open file tree
 keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
-keymap("n", "<C-0>", "<C-w>o", opts) -- close split
+-- doesnt work ??
+-- keymap("n", "<C-0>", "<C-w>o", opts) -- close split
+
 
 -- Navigate buffers
 keymap("n", "<C-o>", "<C-^>", opts) -- back/forth buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
-
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
---keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts) - Move and enter edit mode
---keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-
--- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+--keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts) - Move and enter edit mode
+--keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 --- Visual Block ---
 -- Move text up and down
@@ -93,9 +92,6 @@ keymap('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>
 -- keymap('n', '<leader>lsi', '<CMD>lua require("telescope.builtin").lsp_implementations{}<CR>', opts)
 -- keymap('n', '<leader>lsl', '<CMD>lua require("telescope.builtin").lsp_code_actions{}<CR>', opts)
 -- keymap('n', '<leader>lst', '<CMD>lua require("telescope.builtin").lsp_type_definitions{}<CR>',opts)
---
---
---
 
 -- Toogle diagnostics
 local diagnostics_active = true

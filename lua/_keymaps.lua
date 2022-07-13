@@ -42,15 +42,16 @@ keymap("n", "<C-s>", ':update<cr>', opts)
 keymap("i", "<C-s>", '<Esc>:update<cr>gi', opts)
 keymap("v", "<C-s>", ':<Esc>:update<cr>gv', opts)
 -- Quit file
-keymap("n", "q", ':q<cr>', opts)
-keymap("v", "q", '<Esc>:q<cr>', opts)
-keymap("i", "q", '<Esc>:q<cr>', opts)
+keymap("n", "<C-q>", ':q<cr>', opts)
+keymap("v", "<C-q>", '<Esc>:q<cr>', opts)
+keymap("i", "<C-q>", '<Esc>:q<cr>', opts)
 
 -- Select all
 keymap("n", "<C-a>", "gg<S-v>G", opts)
 keymap("v", "<C-a>", "gg<S-v>G", opts)
 
 -- Better window navigation
+keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -84,6 +85,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap('n', '<leader>fg', '<CMD>lua require("telescope.builtin").git_files{}<CR>', opts)
 keymap('n', '<leader>ff', '<CMD>lua require("telescope.builtin").find_files{ hidden = true }<CR>', opts)
 keymap('n', '<leader>fl', '<CMD>lua require("telescope.builtin").live_grep()<CR>', opts)
+keymap('n', '<leader>fd', '<CMD>lua require("telescope.builtin").live_grep({grep_open_file = true})<CR>', opts)
 keymap('n', '<leader>fb', '<CMD>lua require("telescope.builtin").buffers()<CR>', opts)
 keymap('n', '<leader>fh', '<CMD>lua require("telescope.builtin").help_tags()<CR>', opts)
 keymap('n', '<leader>fe', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)

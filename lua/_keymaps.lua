@@ -15,28 +15,18 @@ vim.g.mapleader = ' '
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Delete without yank
-keymap("n", "d", '"_d', opts)
-keymap("n", "D", '"_D', opts)
-keymap("n", "x", '"_x', opts)
-keymap("n", "db", '"_db', opts)
+-- Paste from register
+keymap("n", "p", '"0p', opts)
+keymap("n", "P", '"0P', opts)
+--keymap("n", "<Leader>d", '"_d', opts)
 
-keymap("n", "<Leader>d", 'd', opts)
-keymap("n", "<Leader>D", 'D', opts)
-keymap("n", "<Leader>db", 'db', opts)
-
-keymap("v", "d", '"_d', opts)
-keymap("v", "<Leader>d", '"_d', opts)
--- Change without yank
-keymap("n", "c", '"_c', opts)
-keymap("n", "C", '"_C', opts)
-keymap("n", "cb", '"_cb', opts)
+-- Redo
+keymap("n", "<C-u>", '<C-r>', opts)
 
 -- Exit insert mode
 keymap("i", "jk", '<ESC>', opts)
 
 -- File management
-keymap("n", "<Leader>b", ':e .<cr>', opts) -- Open dir tree
 -- Save file
 keymap("n", "<C-s>", ':update<cr>', opts)
 keymap("i", "<C-s>", '<Esc>:update<cr>gi', opts)
@@ -51,21 +41,27 @@ keymap("n", "<C-a>", "gg<S-v>G", opts)
 keymap("v", "<C-a>", "gg<S-v>G", opts)
 
 -- Better window navigation
-keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Splits
+keymap("n", "<C-p>", ":wincmd h <bar> :Vex<cr>", opts) -- open file tree
+keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
+keymap("n", "<C-0>", "<C-w>o", opts) -- close split
+
+-- Navigate buffers
+keymap("n", "<C-o>", "<C-^>", opts) -- back/forth buffers
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
 
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 --keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts) - Move and enter edit mode
 --keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-
--- Navigate buffers
---keymap("n", "<S-l>", ":bnext<CR>", opts)
---keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
@@ -106,8 +102,10 @@ local diagnostics_active = true
 local toggle_diagnostics = function()
   diagnostics_active = not diagnostics_active
   if diagnostics_active then
+    vim.api.nvim_echo({ { "Show diagnostics" } }, false, {})
     vim.diagnostic.show()
   else
+    vim.api.nvim_echo({ { "Disable diagnostics" } }, false, {})
     vim.diagnostic.hide()
   end
 end

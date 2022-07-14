@@ -19,16 +19,33 @@ vim.g.mapleader = ' '
 keymap("n", "<C-u>", '<C-r>', opts) -- redo
 keymap("i", "jk", '<ESC>', opts) -- exit insert mode
 keymap("n", "<Enter>", 'o<ESC>', opts) -- standard enter
-keymap("n", "<BS>", 'i<BS><ESC>', opts) -- standard backspace
+keymap("n", "<BS>", 'a<BS><ESC>', opts) -- standard backspace
+keymap("n", "n", 'nzzzv', opts) -- keep screen centred when searching
+keymap("n", "N", 'Nzzzv', opts) -- keep screen centred when searching
+keymap("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts) -- replace all matches
+keymap("v", "y", 'ygv', opts) -- keep cursor in place after yanking
 
 -- Select all
 keymap("n", "<C-a>", "gg<S-v>G", opts)
 keymap("v", "<C-a>", "gg<S-v>G", opts)
 
--- Paste from register
-keymap("n", "p", '"0p', opts)
-keymap("n", "P", '"0P', opts)
---keymap("n", "<Leader>d", '"_d', opts)
+-- Delete without yank
+keymap("n", "x", '"_x', opts)
+keymap("n", "X", '"_X', opts)
+keymap("n", "<Del>", '"_x', opts)
+keymap("n", "db", 'vb"_d', opts)
+
+keymap("n", "<Leader>d", '"_d', opts)
+keymap("v", "<Leader>d", '"_d', opts)
+
+-- Yank into OS clipboard
+keymap("n", "<Leader>y", '"+y', opts)
+keymap("n", "<Leader>Y", '"+Y', opts)
+keymap("v", "<Leader>y", '"+y', opts)
+keymap("v", "<Leader>Y", '"+Y', opts)
+-- keymap("n", "p", '"0p', opts)
+-- keymap("n", "P", '"0P', opts)
+--
 -- File management
 -- Save file
 keymap("n", "<C-s>", ':update<cr>', opts)
@@ -46,9 +63,8 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Splits
-keymap("n", "<C-p>", ":wincmd h <bar> :Vex<cr>", opts) -- open file tree
+-- keymap("n", "<C-p>", ":wincmd h <bar> :Vex<cr>", opts) -- open file tree
 keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
--- doesnt work ??
 -- keymap("n", "<C-0>", "<C-w>o", opts) -- close split
 
 

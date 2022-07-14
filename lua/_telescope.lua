@@ -7,14 +7,21 @@ end
 
 telescope.setup({
   defaults = {
-      file_ignore_patterns = {
-        "node_modules/.*",
-        "secret.d/.*",
-        "%.pem",
-        ".git/",
+    file_ignore_patterns = {
+      "node_modules/.*",
+      "secret.d/.*",
+      "%.pem",
+      ".git/",
 
-      },
-       path_display = { "smart" },
-    }
-  })
+    },
+    path_display = { "smart" },
+  }
+})
 
+-- Telescope file_browser
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-p>",
+  "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
+  { noremap = true }
+)

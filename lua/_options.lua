@@ -54,6 +54,7 @@ vim.cmd([[autocmd BufReadPost quickfix nnoremap <CR> <CR>]])
 vim.cmd([[let g:prettier#autoformat = 1]])
 vim.cmd([[let g:prettier#autoformat_require_pragma = 0]])
 
+vim.g.ansible_extra_keywords_highlight = 1 -- highlight ansible keywords
 vim.g.use_nerd_icons = true
 
 vim.opt.shortmess:append "c"

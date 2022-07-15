@@ -34,17 +34,17 @@ keymap("n", "x", '"_x', opts)
 keymap("n", "X", '"_X', opts)
 keymap("n", "<Del>", '"_x', opts)
 keymap("n", "db", 'vb"_d', opts)
-
 keymap("n", "<Leader>d", '"_d', opts)
-keymap("v", "<Leader>d", '"_d', opts)
+keymap("n", "<Leader>d", '"_d', opts)
+
+keymap("n", "<Leader>p", '"0p', opts)
+keymap("n", "<Leader>P", '"0P', opts)
 
 -- Yank into OS clipboard
 keymap("n", "<Leader>y", '"+y', opts)
 keymap("n", "<Leader>Y", '"+Y', opts)
 keymap("v", "<Leader>y", '"+y', opts)
 keymap("v", "<Leader>Y", '"+Y', opts)
--- keymap("n", "p", '"0p', opts)
--- keymap("n", "P", '"0P', opts)
 --
 -- File management
 -- Save file

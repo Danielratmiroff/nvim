@@ -114,6 +114,8 @@ return packer.startup(function(use)
     ft = { 'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'html' }
   }
 
+  use { "pearofducks/ansible-vim", run = './UltiSnips/generate.sh' } -- Detect ansible filetypes
+
   -- Git
   use "tpope/vim-fugitive"
   -- use "lewis6991/gitsigns.nvim"

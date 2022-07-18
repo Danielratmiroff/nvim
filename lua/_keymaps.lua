@@ -40,12 +40,6 @@ keymap("n", "<Leader>d", '"_d', opts)
 keymap("n", "<Leader>p", '"0p', opts)
 keymap("n", "<Leader>P", '"0P', opts)
 
--- Yank into OS clipboard
-keymap("n", "<Leader>y", '"+y', opts)
-keymap("n", "<Leader>Y", '"+Y', opts)
-keymap("v", "<Leader>y", '"+y', opts)
-keymap("v", "<Leader>Y", '"+Y', opts)
---
 -- File management
 -- Save file
 keymap("n", "<C-s>", ':update<cr>', opts)
@@ -83,7 +77,7 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
 --- Visual Block ---
 -- Move text up and down
-keymap("n", "<Leader>q", "<C-q>", opts)
+keymap("n", "q", "<C-q>", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)

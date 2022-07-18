@@ -11,6 +11,6 @@ comment.setup({
     ---Line-comment keymap
     --line = 'gc',
     ---Block-comment keymap
-    block = '<Leader>cb',
+    block = '<Leader>b',
   },
 })

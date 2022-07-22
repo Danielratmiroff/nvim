@@ -40,7 +40,8 @@ local options = {
   ttyfast = true, -- Speed up scrolling in Vim
   wildmode = "longest,list", -- get bash-like tab completions
   syntax = "on", -- syntax highlighting
-  laststatus = 2
+  laststatus = 2,
+  autoread = true
 }
 
 vim.cmd([[let g:python3_host_prog = '/bin/python3']])
@@ -68,11 +69,23 @@ end
 
 -- WSL yank support
 vim.cmd([[
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  
 if executable(s:clip)
     augroup WSLYank
         autocmd!
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
+]])
+
+-- Trigger autoread (reload) to keep vim on sync with file changes
+vim.cmd([[
+" Triger `autoread` when files changes on disk
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+autocmd FileChangedShellPost * echo "File changed on disk. Buffer reloaded." 
+
+" Refresh buffer on focus
+autocmd FocusGained * :e!
 ]])

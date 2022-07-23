@@ -6,6 +6,7 @@ require "lsp.null-ls"
 
 local lsp = require('lsp-zero')
 
+-- Lsp-Zero configuration to LSP
 lsp.set_preferences({
   suggest_lsp_servers = true,
   setup_servers_on_start = true,
@@ -39,3 +40,9 @@ vim.diagnostic.config({
     source = 'always',
   },
 })
+
+local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+for type, icon in pairs(signs) do
+  local hl = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end

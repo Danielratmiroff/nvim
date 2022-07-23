@@ -25,14 +25,14 @@ M.setup = function()
   })
 end
 
--- Text definition on hover
+-- Show text definition of current word
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
   end,
 })
 
--- Highlight definition on hover
+-- Highlight words matching current definition
 local function lsp_highlight_document(client)
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
@@ -45,7 +45,7 @@ end
 vim.cmd([[ 
 let g:Illuminate_highlightUnderCursor = 0 
 let g:Illuminate_delay = 250
-]]) -- Highlight word under cursor
+]])
 
 -- Keymappings for LSP
 local function lsp_keymaps(bufnr)

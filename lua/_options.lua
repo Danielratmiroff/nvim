@@ -42,6 +42,7 @@ local options = {
   syntax = "on", -- syntax highlighting
   laststatus = 2,
   autoread = true
+
 }
 
 vim.cmd([[let g:python3_host_prog = '/bin/python3']])
@@ -49,6 +50,7 @@ vim.cmd([[highlight Normal guibg=none]])
 vim.cmd([[filetype plugin on]])
 vim.cmd([[filetype plugin indent on]]) -- allow auto-indenting depending on file type
 
+-- Allow remapping enter
 vim.cmd([[autocmd CmdwinEnter * nnoremap <CR> <CR>]])
 vim.cmd([[autocmd BufReadPost quickfix nnoremap <CR> <CR>]])
 
@@ -61,7 +63,6 @@ vim.g.use_nerd_icons = true
 vim.opt.shortmess:append "c"
 vim.cmd([["set whichwrap+=<,>,[,],h,l"]])
 vim.cmd([[set iskeyword+=-]])
--- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
 for k, v in pairs(options) do
   vim.opt[k] = v

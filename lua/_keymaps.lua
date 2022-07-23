@@ -1,5 +1,4 @@
 -- Key Mappings
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -23,7 +22,7 @@ keymap("n", "<BS>", 'a<BS><ESC>', opts) -- standard backspace
 keymap("n", "n", 'nzzzv', opts) -- keep screen centred when searching
 keymap("n", "N", 'Nzzzv', opts) -- keep screen centred when searching
 keymap("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts) -- replace all matches
-keymap("v", "y", 'ygv', opts) -- keep cursor in place after yanking
+-- keymap("v", "y", 'ygv', opts) -- keep cursor in place after yanking
 
 -- Select all
 keymap("n", "<C-a>", "gg<S-v>G", opts)
@@ -59,8 +58,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Splits
 -- keymap("n", "<C-p>", ":wincmd h <bar> :Vex<cr>", opts) -- open file tree
 keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
--- keymap("n", "<C-0>", "<C-w>o", opts) -- close split
-
 
 -- Navigate buffers
 keymap("n", "<C-o>", "<C-^>", opts) -- back/forth buffers
@@ -95,13 +92,14 @@ keymap('n', '<leader>fb', '<CMD>lua require("telescope.builtin").buffers()<CR>',
 keymap('n', '<leader>fh', '<CMD>lua require("telescope.builtin").help_tags()<CR>', opts)
 keymap('n', '<leader>fe', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)
 keymap('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>', opts)
+keymap("n", "<C-p>", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>", opts) -- Telescope's file_browser plugin
 
--- Language Servers
--- -- Do not work for now
--- keymap('n', '<leader>lsd', '<CMD>lua require("telescope.builtin").lsp_definitions{}<CR>', opts)
--- keymap('n', '<leader>lsi', '<CMD>lua require("telescope.builtin").lsp_implementations{}<CR>', opts)
--- keymap('n', '<leader>lsl', '<CMD>lua require("telescope.builtin").lsp_code_actions{}<CR>', opts)
--- keymap('n', '<leader>lst', '<CMD>lua require("telescope.builtin").lsp_type_definitions{}<CR>',opts)
+-- Luasnipts
+keymap("i", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+keymap("n", "<leader>so", "<cmd>source ~/.config/nvim/lua/_luasnip.lua<CR>", opts)
 
 -- Toogle diagnostics
 local diagnostics_active = true

@@ -21,7 +21,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost _plugins.lua source <afile> | PackerSync
   augroup end
 ]])
 
@@ -44,10 +44,11 @@ packer.init({
 return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
-  use "numToStr/Comment.nvim"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "fatih/vim-go"
-  use "mhinz/vim-startify"
+  use "numToStr/Comment.nvim" -- Commenter toogler
+  use "JoosepAlviste/nvim-ts-context-commentstring" -- Commenter
+  use "fatih/vim-go" -- Go development plugin 
+  use "mhinz/vim-startify" -- Welcome screen to vim
+  use "mg979/vim-visual-multi" -- multi cursor
 
   -- Themes
   -- use "sainnhe/edge"
@@ -83,9 +84,10 @@ return packer.startup(function(use)
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
       { 'hrsh7th/cmp-cmdline' },
+
       -- Snippets
       { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
+      -- { 'rafamadriz/friendly-snippets' },
     }
   }
 
@@ -117,14 +119,13 @@ return packer.startup(function(use)
   use { "pearofducks/ansible-vim", run = './UltiSnips/generate.sh' } -- Detect ansible filetypes
 
   -- Git
-  use "tpope/vim-fugitive"
+  -- use "tpope/vim-fugitive"
   -- use "lewis6991/gitsigns.nvim"
   --  use "ruifm/gitlinker.nvim"
   -- use "mattn/vim-gist"
   --use "mattn/webapi-vim"
 
   use "preservim/nerdcommenter"
-  use "sirver/ultisnips"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

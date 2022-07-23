@@ -6,6 +6,7 @@ local source_mapping = {
   buffer = "[Buffer]",
   nvim_lsp = "[LSP]",
   nvim_lua = "[Lua]",
+  luasnip = "[Snp]",
   cmp_tabnine = "[T9]",
   path = "[Path]",
 }
@@ -15,7 +16,7 @@ local source_mapping = {
 cmp.setup({
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert {
@@ -27,10 +28,12 @@ cmp.setup({
   },
   sources = {
     { name = 'cmp_tabnine' },
+    { name = "luasnip" },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'treesitter' },
     { name = 'vsnip' },
+    { name = 'path' },
   },
   formatting = {
     format = function(entry, vim_item)
@@ -38,7 +41,7 @@ cmp.setup({
       local menu = source_mapping[entry.source.name]
       if entry.source.name == "cmp_tabnine" then
         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-          menu = entry.completion_item.data.detail .. " " .. menu
+          menu = entry.completion_item.data.detail .. " " .. menu -- Shows the % accurate information
         end
         vim_item.kind = ""
       end

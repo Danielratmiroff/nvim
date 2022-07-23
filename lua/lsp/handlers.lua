@@ -41,6 +41,12 @@ local function lsp_highlight_document(client)
   illuminate.on_attach(client)
 end
 
+-- Illuminate settings
+vim.cmd([[ 
+let g:Illuminate_highlightUnderCursor = 0 
+let g:Illuminate_delay = 250
+]]) -- Highlight word under cursor
+
 -- Keymappings for LSP
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }

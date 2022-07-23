@@ -1,12 +1,22 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  return "Something failed with Telescope"
-end
-
--- local actions = require "telescope.actions" Need to define new keymaps for navigation
+local telescope = require "telescope"
+local actions = require "telescope.actions"
 
 telescope.setup({
   defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-q>"] = actions.close,
+        ["<C-x>"] = actions.file_vsplit,
+      },
+      n = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-q>"] = actions.close,
+        ["<C-x>"] = actions.file_vsplit,
+      },
+    },
     file_ignore_patterns = {
       "node_modules/.*",
       "secret.d/.*",
@@ -17,11 +27,3 @@ telescope.setup({
     path_display = { "smart" },
   }
 })
-
--- Telescope file_browser
-vim.api.nvim_set_keymap(
-  "n",
-  "<C-p>",
-  "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
-  { noremap = true }
-)

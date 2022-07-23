@@ -67,7 +67,7 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
--- WSL yank support
+-- WSL yank support for clipboard
 vim.cmd([[
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  
 if executable(s:clip)
@@ -78,14 +78,14 @@ if executable(s:clip)
 endif
 ]])
 
+-- Highlight yanked text
+vim.cmd([[
+autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=500}
+]])
+
 -- Trigger autoread (reload) to keep vim on sync with file changes
 vim.cmd([[
-" Triger `autoread` when files changes on disk
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-
-" Notification after file change
-autocmd FileChangedShellPost * echo "File changed on disk. Buffer reloaded." 
-
-" Refresh buffer on focus
-autocmd FocusGained * :e!
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif " Triger `autoread` when files changes on disk
+autocmd FileChangedShellPost * echo "File changed on disk. Buffer reloaded." " Notification after file change
+autocmd FocusGained * :e " Refresh buffer on focus
 ]])

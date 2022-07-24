@@ -11,6 +11,39 @@ local source_mapping = {
   path = "[Path]",
 }
 
+lspkind.init({
+  mode = 'symbol_text',
+
+  preset = 'codicons',
+
+  symbol_map = {
+    Text = "",
+    Method = "",
+    Function = "",
+    Constructor = "",
+    Field = "ﰠ",
+    Variable = "",
+    Class = "ﴯ",
+    Interface = "",
+    Module = "",
+    Property = "ﰠ",
+    Unit = "塞",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "פּ",
+    Event = "",
+    Operator = "",
+    TypeParameter = ""
+  },
+})
 
 -- Autocompletion configuration
 cmp.setup({
@@ -41,7 +74,8 @@ cmp.setup({
       local menu = source_mapping[entry.source.name]
       if entry.source.name == "cmp_tabnine" then
         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-          menu = entry.completion_item.data.detail .. " " .. menu -- Shows the % accurate information
+          -- menu = entry.completion_item.data.detail .. " " .. menu -- Shows the % of accuracy
+          menu = menu
         end
         vim_item.kind = ""
       end

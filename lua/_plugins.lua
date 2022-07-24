@@ -44,12 +44,6 @@ packer.init({
 return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
-  use "numToStr/Comment.nvim" -- Commenter toogler
-  use "JoosepAlviste/nvim-ts-context-commentstring" -- Commenter
-  use "fatih/vim-go" -- Go development plugin 
-  use "mhinz/vim-startify" -- Welcome screen to vim
-  use "mg979/vim-visual-multi" -- multi cursor
-
   -- Themes
   -- use "sainnhe/edge"
   use 'folke/tokyonight.nvim'
@@ -105,6 +99,7 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
   use "nvim-lua/plenary.nvim"
   use "nvim-telescope/telescope-file-browser.nvim"
+
   -- Treesitter
   use "nvim-treesitter/nvim-treesitter"
 
@@ -116,6 +111,12 @@ return packer.startup(function(use)
     ft = { 'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'html' }
   }
 
+  -- Extra juicy stuff
+  use "numToStr/Comment.nvim" -- Commenter toogler
+  use "JoosepAlviste/nvim-ts-context-commentstring" -- Commenter
+  use "fatih/vim-go" -- Go development plugin 
+  use "mhinz/vim-startify" -- Welcome screen to vim
+  use "mg979/vim-visual-multi" -- multi cursor
   use { "pearofducks/ansible-vim", run = './UltiSnips/generate.sh' } -- Detect ansible filetypes
 
   -- Git
@@ -124,8 +125,6 @@ return packer.startup(function(use)
   --  use "ruifm/gitlinker.nvim"
   -- use "mattn/vim-gist"
   --use "mattn/webapi-vim"
-
-  use "preservim/nerdcommenter"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

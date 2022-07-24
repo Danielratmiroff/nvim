@@ -1,16 +1,15 @@
 local comment = require "Comment"
 
 comment.setup({
+  ---LHS of toggle mappings in NORMAL + VISUAL mode
   toggler = {
-    ---Line-comment toggle keymap
-    line = '<Leader>c',
-    ---Block-comment toggle keymap
-    --block = 'hey',
+    line = 'gcc', ---Line-comment toggle keymap
+    block = 'gbc', ---Block-comment toggle keymap
   },
+
+  ---LHS of operator-pending mappings in NORMAL + VISUAL mode
   opleader = {
-    ---Line-comment keymap
-    --line = 'gc',
-    ---Block-comment keymap
-    block = '<Leader>b',
+    line = 'gc', ---Line-comment keymap
+    block = 'gb', ---Block-comment keymap
   },
 })

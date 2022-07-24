@@ -117,6 +117,7 @@ return packer.startup(function(use)
   use "fatih/vim-go" -- Go development plugin 
   use "mhinz/vim-startify" -- Welcome screen to vim
   use "mg979/vim-visual-multi" -- multi cursor
+  use "tpope/vim-surround" -- surround word 
   use { "pearofducks/ansible-vim", run = './UltiSnips/generate.sh' } -- Detect ansible filetypes
 
   -- Git

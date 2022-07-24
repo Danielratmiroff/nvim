@@ -14,6 +14,7 @@ vim.g.mapleader = ' '
 --   term_mode = "t",
 --   command_mode = "c",
 
+
 -- General
 keymap("n", "<C-u>", '<C-r>', opts) -- redo
 keymap("i", "jk", '<ESC>', opts) -- exit insert mode

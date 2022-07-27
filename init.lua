@@ -1,3 +1,5 @@
+vim.opt.shell = "/bin/bash" -- Use bash instead of fish (faster for nvim)
+
 require "_keymaps"
 require "_options"
 require "_plugins"

@@ -96,10 +96,10 @@ keymap('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>
 keymap("n", "<C-p>", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>", opts) -- Telescope's file_browser plugin
 
 -- Luasnipts
-keymap("i", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-keymap("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
-keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+keymap("i", "<C-l>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("s", "<C-l>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("i", "<C-h>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+keymap("s", "<C-h>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 keymap("n", "<leader>so", "<cmd>source ~/.config/nvim/lua/_luasnip.lua<CR>", opts)
 
 -- Toogle diagnostics
@@ -108,10 +108,10 @@ local toggle_diagnostics = function()
   diagnostics_active = not diagnostics_active
   if diagnostics_active then
     vim.api.nvim_echo({ { "Show diagnostics" } }, false, {})
-    vim.diagnostic.show()
+    vim.diagnostic.enable()
   else
     vim.api.nvim_echo({ { "Disable diagnostics" } }, false, {})
-    vim.diagnostic.hide()
+    vim.diagnostic.disable()
   end
 end
 

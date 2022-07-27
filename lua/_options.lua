@@ -88,5 +88,5 @@ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexi
 vim.cmd([[
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif " Triger `autoread` when files changes on disk
 autocmd FileChangedShellPost * echo "File changed on disk. Buffer reloaded." " Notification after file change
-autocmd FocusGained * :e " Refresh buffer on focus
+" autocmd FocusGained * :e " Refresh buffer on focus -- TODO: disabled cause err warnings keep spamming
 ]])

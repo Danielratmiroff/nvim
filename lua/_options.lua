@@ -84,7 +84,7 @@ vim.cmd([[
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=500}
 ]])
 
--- Trigger autoread (reload) to keep vim on sync with file changes
+--Trigger autoread (reload) to keep vim on sync with file changes
 vim.cmd([[
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif " Triger `autoread` when files changes on disk
 autocmd FileChangedShellPost * echo "File changed on disk. Buffer reloaded." " Notification after file change

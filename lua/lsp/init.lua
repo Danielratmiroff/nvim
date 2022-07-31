@@ -9,6 +9,7 @@ local lsp = require('lsp-zero')
 -- Lsp-Zero configuration to LSP
 lsp.set_preferences({
   suggest_lsp_servers = true,
+  -- TODO: most likely needed to disable (since we are configuring it ourselves)
   setup_servers_on_start = true,
   set_lsp_keymaps = false,
   configure_diagnostics = false,
@@ -22,6 +23,44 @@ lsp.set_preferences({
     info = ''
   }
 })
+
+lsp.on_attach(function(client, bufnr)
+  local noremap = {buffer = bufnr, remap = false}
+  local keymap = vim.keymap.set
+
+  keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", noremap)
+  keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", noremap)
+  keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", noremap)
+  keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", noremap)
+  keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", noremap)
+  keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", noremap)
+  keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremap)
+  keymap("n", "<M-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremap)
+
+  keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", noremap)
+  keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", noremap)
+  keymap("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", noremap)
+  keymap("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', noremap)
+  keymap("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', noremap)
+  -- keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", noremap)
+
+  require 'illuminate'.on_attach(client)
+end)
+
+local lsp_opts = { }
+
+lsp.setup_servers({
+  "jsonls_opts",
+  "yamlls",
+  "sumneko_lua",
+  "pyright",
+  "gopls",
+  "tsserver",
+  "emmet_ls",
+  opts = lsp_opts
+})
+
+vim.cmd[[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]]
 
 lsp.setup()
 

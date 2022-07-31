@@ -23,14 +23,14 @@ ls.add_snippets(nil, {
   go = {
     -- fmt.Println
     snip({
-      trig = "pl",
+      trig = "prl",
       namr = "(GO) Println",
     },
       fmt('fmt.Println("{}")', { i(0) })),
 
     --  fmt.Printf
     snip({
-      trig = "pf",
+      trig = "prf",
       namr = "(GO) Printf",
       dscr = "Print with formatters",
     },

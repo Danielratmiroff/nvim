@@ -70,8 +70,6 @@ keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
---keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts) - Move and enter edit mode
---keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 --- Visual Block ---
 -- Move text up and down

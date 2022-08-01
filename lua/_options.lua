@@ -45,6 +45,14 @@ local options = {
 
 }
 
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
+
+vim.opt.shortmess:append "c"
+vim.cmd([["set whichwrap+=<,>,[,],h,l"]])
+vim.cmd([[set iskeyword+=-]])
+
 vim.cmd([[let g:python3_host_prog = '/bin/python3']])
 vim.cmd([[highlight Normal guibg=none]])
 vim.cmd([[filetype plugin on]])
@@ -57,16 +65,13 @@ vim.cmd([[autocmd BufReadPost quickfix nnoremap <CR> <CR>]])
 vim.cmd([[let g:prettier#autoformat = 1]])
 vim.cmd([[let g:prettier#autoformat_require_pragma = 0]])
 
-vim.g.ansible_extra_keywords_highlight = 1 -- highlight ansible keywords
+-- Autoformat
+vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+
+-- highlight ansible keywords
+vim.g.ansible_extra_keywords_highlight = 1 
+
 vim.g.use_nerd_icons = true
-
-vim.opt.shortmess:append "c"
-vim.cmd([["set whichwrap+=<,>,[,],h,l"]])
-vim.cmd([[set iskeyword+=-]])
-
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
 
 -- WSL yank support for clipboard
 vim.cmd([[

@@ -1,15 +1,18 @@
 -- Settings for Lsp Language Server Installer
-local lsp_installer = require "nvim-lsp-installer"
 
 local servers = {
   "cssls",
   "cssmodules_ls",
   "emmet_ls",
   "html",
-  -- JAVA  "jdtls",
   "jsonls",
   "sumneko_lua",
+  "golangci-lint",
+  "quick-lint-js",
+  "yamllint",
   "tsserver",
+  "selene",
+  "vint",
   "pyright",
   "yamlls",
   "bashls",
@@ -18,73 +21,40 @@ local servers = {
   "eslint",
   "gopls",
   "golangci_lint_ls",
-  "graphql",
   "marksman",
-  "stylelint_lsp",
   "vuels",
   "vimls",
+  "prettierd",
+  "fixjson"
 }
 
 local settings = {
-  ensure_installed = servers,
-  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
   ui = {
     icons = {
-      server_installed = "✓",
-      server_pending = "➜",
-      server_uninstalled = "✗"
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
     },
+
     keymaps = {
-      toggle_server_expand = "<CR>",
-      install_server = "i",
-      update_server = "u",
-      check_server_version = "c",
-      update_all_servers = "U",
-      check_outdated_servers = "C",
-      uninstall_server = "X",
+      toggle_package_expand = "<CR>", -- Keymap to expand a package
+      install_package = "i", -- Keymap to install the package under the current cursor position
+      update_package = "u", -- Keymap to reinstall/update the package under the current cursor position
+      check_package_version = "c", -- Keymap to check for new version for the package under the current cursor position
+      update_all_packages = "U", -- Keymap to update all installed packages
+      check_outdated_packages = "C", -- Keymap to check which installed packages are outdated
+      uninstall_package = "X", -- Keymap to uninstall a package
+      cancel_installation = "<C-c>", -- Keymap to cancel a package installation
+      apply_language_filter = "<C-f>", -- Keymap to apply language filter
     },
   },
 
+  max_concurrent_installers = 4,
   log_level = vim.log.levels.INFO,
 }
 
-lsp_installer.setup(settings)
-
-
-  -- if server == "jsonls" then
-  --   local jsonls_opts = require "lsp.settings.jsonls"
-  --   opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-  -- end
-  --
-  -- if server == "yamlls" then
-  --   local yamlls_opts = require "lsp.settings.yamlls"
-  --   opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
-  -- end
-  --
-  -- if server == "sumneko_lua" then
-  --   local sumneko_opts = require "lsp.settings.sumneko_lua"
-  --   opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-  -- end
-  --
-  -- if server == "pyright" then
-  --   local pyright_opts = require "lsp.settings.pyright"
-  --   opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-  -- end
-  --
-  -- if server == "gopls" then
-  --   local gopls_opts = require "lsp.settings.gopls"
-  --   opts = vim.tbl_deep_extend("force", gopls_opts, opts)
-  -- end
-  --
-  -- if server == "tsserver" then
-  --   local tsserver_opts = require "lsp.settings.tsserver"
-  --   opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-  -- end
-  --
-  -- if server == "emmet_ls" then
-  --   local emmet_ls_opts = require "lsp.settings.emmet_ls"
-  --   opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
-  -- end
-  --
-  -- lspconfig[server].setup(opts)
-  -- ::continue::
+require("mason").setup(settings)
+require("mason-lspconfig").setup({
+  ensure_installed = servers,
+  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+})

@@ -16,7 +16,6 @@ vim.g.mapleader = ' '
 
 
 -- General
-keymap("n", "<C-u>", '<C-r>', opts) -- redo
 keymap("i", "jk", '<ESC>', opts) -- exit insert mode
 keymap("n", "<Enter>", 'o<ESC>', opts) -- standard enter
 keymap("n", "<BS>", 'a<BS><ESC>', opts) -- standard backspace
@@ -29,16 +28,17 @@ keymap("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
 keymap("n", "<C-a>", "gg<S-v>G", opts)
 keymap("v", "<C-a>", "gg<S-v>G", opts)
 
--- Delete without yank
+-- Delete/Change without yank
 keymap("n", "x", '"_x', opts)
-keymap("n", "X", '"_X', opts)
 keymap("n", "<Del>", '"_x', opts)
 keymap("n", "db", 'vb"_d', opts)
 keymap("n", "<Leader>d", '"_d', opts)
-keymap("n", "<Leader>d", '"_d', opts)
+keymap("v", "<Leader>d", '"_d', opts)
 
 keymap("n", "<Leader>p", '"0p', opts)
 keymap("n", "<Leader>P", '"0P', opts)
+keymap("n", "<Leader>c", '"0c', opts)
+keymap("n", "<Leader>C", '"0C', opts)
 
 -- File management
 -- Save file

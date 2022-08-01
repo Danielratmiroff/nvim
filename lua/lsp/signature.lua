@@ -1,7 +1,4 @@
-local status_ok, signature = pcall(require, "lsp_signature")
-if not status_ok then
-  return
-end
+local signature = require "lsp_signature"
 
 local cfg = {
   debug = false, -- set to true to enable debug logging

@@ -1,4 +1,6 @@
 -- Key Mappings
+local notify = require("notify")
+
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -105,10 +107,10 @@ local diagnostics_active = true
 local toggle_diagnostics = function()
   diagnostics_active = not diagnostics_active
   if diagnostics_active then
-    vim.api.nvim_echo({ { "Show diagnostics" } }, false, {})
+    notify("Enabled diagnostics")
     vim.diagnostic.enable()
   else
-    vim.api.nvim_echo({ { "Disable diagnostics" } }, false, {})
+    notify("Disabled diagnostics", "warn")
     vim.diagnostic.disable()
   end
 end

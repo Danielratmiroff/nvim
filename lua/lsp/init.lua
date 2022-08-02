@@ -4,6 +4,8 @@ require("_cmp")
 require("lsp.handlers")
 require("lsp.null-ls")
 
+local notify = require("notify")
+
 local lsp = require("lsp-zero")
 
 -- Lsp-Zero configuration to LSP
@@ -35,7 +37,6 @@ lsp.on_attach(function(client, bufnr)
   keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", noremap)
 
   keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremap)
-  keymap("n", "<M-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremap)
 
   keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", noremap)
   keymap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<CR>", noremap)

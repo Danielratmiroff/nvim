@@ -113,6 +113,7 @@ return packer.startup(function(use)
   }
 
   -- Extra juicy stuff
+  use 'rcarriga/nvim-notify' -- Vim notifications
   use "numToStr/Comment.nvim" -- Commenter toogler
   use "JoosepAlviste/nvim-ts-context-commentstring" -- Commenter
   use "fatih/vim-go" -- Go development plugin 

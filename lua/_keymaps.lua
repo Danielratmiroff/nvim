@@ -60,6 +60,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Splits
 -- keymap("n", "<C-p>", ":wincmd h <bar> :Vex<cr>", opts) -- open file tree
+keymap("n", "<C-x>", "<cmd>:Ex<cr>", opts) -- split screen
 keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
 
 -- Navigate buffers
@@ -108,10 +109,10 @@ local toggle_diagnostics = function()
   diagnostics_active = not diagnostics_active
   if diagnostics_active then
     notify("Enabled diagnostics")
-    vim.diagnostic.enable()
+    vim.diagnostic.enable(0)
   else
     notify("Disabled diagnostics", "warn")
-    vim.diagnostic.disable()
+    vim.diagnostic.disable(0)
   end
 end
 

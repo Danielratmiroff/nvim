@@ -4,8 +4,6 @@ require("_cmp")
 require("lsp.handlers")
 require("lsp.null-ls")
 
-local notify = require("notify")
-
 local lsp = require("lsp-zero")
 
 -- Lsp-Zero configuration to LSP

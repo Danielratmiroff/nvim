@@ -23,6 +23,8 @@ keymap("n", "<Enter>", 'o<ESC>', opts) -- standard enter
 keymap("n", "<BS>", 'a<BS><ESC>', opts) -- standard backspace
 keymap("n", "n", 'nzzzv', opts) -- keep screen centred when searching
 keymap("n", "N", 'Nzzzv', opts) -- keep screen centred when searching
+keymap("n", "<c-u>", '<c-u>zz', opts) -- keep screen centred when scrolling
+keymap("n", "<c-d>", '<c-d>zz', opts) -- keep screen centred when scrolling
 keymap("n", "<Leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts) -- replace all matches
 -- keymap("v", "y", 'ygv', opts) -- keep cursor in place after yanking
 
@@ -60,7 +62,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Splits
 -- keymap("n", "<C-p>", ":wincmd h <bar> :Vex<cr>", opts) -- open file tree
-keymap("n", "<C-x>", "<cmd>:Ex<cr>", opts) -- split screen
+-- keymap("n", "<C-x>", "<cmd>:Ex<cr>", opts)
 keymap("n", "<C-\\>", "<C-w>v", opts) -- split screen
 
 -- Navigate buffers

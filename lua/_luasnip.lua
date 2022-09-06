@@ -90,7 +90,7 @@ ls.add_snippets(nil, {
 
     -- useEffect
     snip({
-      trig = "uef",
+      trig = "usf",
       namr = "(JS) useEffect",
     },
       fmt([=[

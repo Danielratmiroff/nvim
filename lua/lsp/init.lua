@@ -37,7 +37,7 @@ lsp.on_attach(function(client, bufnr)
   keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", noremap)
 
   keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", noremap)
-  keymap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<CR>", noremap)
+  keymap("n", "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", noremap)
   keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", noremap)
   keymap("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', noremap)
   keymap("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', noremap)
